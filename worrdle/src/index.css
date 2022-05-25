@@ -1,0 +1,49 @@
+:root{
+    --primary: #d81e5b;
+    --secondary: #8c38ff;
+    --dark: #131a26;
+    --light: #eee; 
+  }
+  
+  * {
+    margin: 10;
+    padding: 10;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+  }
+  
+  body {
+    background-color: var(--dark);
+  }
+  
+  .App {
+    display: flex;
+    min-height: 75vh;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .gameBoard {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    margin-top: flex-start;
+  }
+
+
+.Square {
+    background: var(--dark);
+  border: 1px solid #999;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+  
