@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { AppContext } from './App';
 
 
+const NUM_ROWS = 3; // the number of rows in the keyboard
+
 // function which creates a keyboard row by 
 // taking props as input
 
@@ -11,7 +13,7 @@ function KeyBoardRow(props){
     // getting the state of the Keyboard button pressed from
     // App.js
     let  {setKeyBoardButtonPressed, 
-        CheckWordOnEnter, DeleteWord, keyHandler} = useContext(AppContext);
+        checkWordOnEnter, deleteWord, keyHandler} = useContext(AppContext);
 
     // create the keyboard keys iteratively.s
     for(let key = 1; key <= props.Keys[props.id-1].length; ++key){
@@ -26,9 +28,9 @@ function KeyBoardRow(props){
 
             // if delete is pressed
             if(event.target.id==='DEL'){
-                DeleteWord(); // call the DeleteWord functionality
+                deleteWord(); // call the DeleteWord functionality
             }else if(event.target.id==='ENTER'){
-                CheckWordOnEnter(); // call the CheckWordOnEnter functionality
+                checkWordOnEnter(); // call the CheckWordOnEnter functionality
             }else if(event.target.id!==''){ 
                 // execute the keyHandler.
                 keyHandler({id: props.id, key: key, Keys: props.Keys});
@@ -42,8 +44,7 @@ function KeyBoardRow(props){
 }
 
 // function for creating the Keyboard 
-function CreateKeyBoard(){
-    const NUM_ROWS = 3; // the number of rows in the keyboard
+function KeyBoardContainer(){
     const KeyBoard = []; //array storing the Keyboard
 
     // values for the keys of the keyboard
@@ -66,7 +67,7 @@ function CreateKeyBoard(){
 function KeyBoard(){
     return(
         <div className='KeyBoard'>
-            <CreateKeyBoard />
+            <KeyBoardContainer />
         </div>
     )
 }

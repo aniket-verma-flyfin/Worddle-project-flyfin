@@ -38,7 +38,7 @@ export const boardColor = [
   }
   
   //for creating the game board
-  function CreateGameBoard(props){
+  function GameBoardContainer(props){
     const TOTAL_ROWS = 6; // total number of rows in a game board
     const BlockRows = []; // array for storing the block rows
     
@@ -56,11 +56,11 @@ export const boardColor = [
   //gameBoard component
   function GameBoard(){
 
-    let {newboard, setNewBoard, newboardColor} = useContext(AppContext);
+    let {newBoard, setNewBoard, newBoardColor} = useContext(AppContext);
 
     return (
         <div className="gameBoard">
-            <CreateGameBoard gameboard = {newboard} SetGameBoard = {setNewBoard} boardColor = {newboardColor}/>
+            <GameBoardContainer gameboard = {newBoard} SetGameBoard = {setNewBoard} boardColor = {newBoardColor}/>
         </div>
     );
   }

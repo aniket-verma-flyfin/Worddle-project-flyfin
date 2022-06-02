@@ -19,33 +19,33 @@ function App() {
   // keyBoardButtonPressed is the key which is pressed 
   const [keyBoardButtonPressed, setKeyBoardButtonPressed] = useState("");
 
-  // newboard state is to update the state of 2d board
-  let [newboard, setNewBoard] = useState(board);
+  // newBoard state is to update the state of 2d board
+  const [newBoard, setNewBoard] = useState(board);
 
   // color of each cell of the board
-  let [newboardColor, setNewBoardColor] = useState(boardColor);
+  let [newBoardColor, setNewBoardColor] = useState(boardColor);
 
   // this function checks whether word on Enter is correct or not
-  const CheckWordOnEnter = () => {
+  const checkWordOnEnter = () => {
 
     // check if the current game is not over
     if(!gameState) return;
 
     // check if the whole row is complete or not.
     for(let i = 0; i<5;  ++i){
-      if(newboard[activeRow][i]==='') return;
+      if(newBoard[activeRow][i]==='') return;
     }
     // match the current row with the answer
     let shouldGameStop = true;
 
     // storing the newboardColor in a variable
-    let updateBoardColor = newboardColor; 
+    let updateBoardColor = newBoardColor; 
 
     // check for updation of the color of each cell
     for(let i = 0; i < 5; ++i){
-        if(newboard[activeRow][i]!==Answer[i]){
+        if(newBoard[activeRow][i]!==Answer[i]){
             shouldGameStop = false; // if one character doesn;t match
-            updateBoardColor[activeRow][i] = 	(Answer.includes(newboard[activeRow][i])?'#d0a32b':'#303030');
+            updateBoardColor[activeRow][i] = 	(Answer.includes(newBoard[activeRow][i])?'#d0a32b':'#303030');
         }else{
           updateBoardColor[activeRow][i] = 	'#6b8e23';
         }
@@ -69,15 +69,15 @@ function App() {
 }
 
 // function that Deletes the word on calling delete
-const DeleteWord = () => {
+const deleteWord = () => {
 
   // check if the current game is not over
   if(!gameState) return;
 
   // if current cell is not empty 
-  if(newboard[activeRow][activeCol]){
-    newboard[activeRow][activeCol]=''; // assign it the empty string
-    setNewBoard(newboard); // set the new state of the board
+  if(newBoard[activeRow][activeCol]){
+    newBoard[activeRow][activeCol]=''; // assign it the empty string
+    setNewBoard(newBoard); // set the new state of the board
     if(activeCol-1>=0){
       setActiveCol(activeCol-1);
     }
@@ -87,12 +87,12 @@ const DeleteWord = () => {
   else if(activeRow >=0  && activeRow < 6){
       if (activeCol >=0 && activeCol < 5){
           if(activeCol!==0){ // edge case check if its not the very first cell.
-              newboard[activeRow][activeCol-1]=''; // assign it the empty string
-              setNewBoard(newboard); // set the new state of the board
+              newBoard[activeRow][activeCol-1]=''; // assign it the empty string
+              setNewBoard(newBoard); // set the new state of the board
               setActiveCol(activeCol - 1);
           }else{
-              newboard[activeRow][activeCol]=''; // assign it the empty string
-              setNewBoard(newboard); // set the new state of the board
+              newBoard[activeRow][activeCol]=''; // assign it the empty string
+              setNewBoard(newBoard); // set the new state of the board
           }
       }
   }
@@ -105,20 +105,20 @@ const keyHandler = (props) => {
   
   let updateBoard = []; // to store the updated board
   
-  if(newboard[activeRow][activeCol]!==''){
+  if(newBoard[activeRow][activeCol]!==''){
     setActiveCol(activeCol+1);
   }
 
   // make the updations in the newboard
-  for(let i = 0; i<newboard.length; ++i){
+  for(let i = 0; i<newBoard.length; ++i){
       let arr =[];
-      for(let j = 0; j<newboard[i].length;++j){
+      for(let j = 0; j<newBoard[i].length;++j){
         // if the current cell was updated then update in the new board as well
         if(i===activeRow && j===activeCol){
           arr.push(props.Keys[props.id - 1][props.key-1]);
         }else{
           // else push the same state in the new board
-          arr.push(newboard[i][j]);
+          arr.push(newBoard[i][j]);
         }
       }
       updateBoard.push(arr);
@@ -140,11 +140,10 @@ const keyHandler = (props) => {
   setActiveCol(updatedActiveCol);
 };
 
-
   return (
     <>
     <div >
-      <h1 className='Title' style = {{color: 'white', textAlign: 'center', fontWeight: 'bold', fontFamily: 'Arial'}}> Worrdle</h1>
+      <h1 className='Title'> Worrdle</h1>
       <hr
         style={{
             color: 'white',
@@ -157,10 +156,10 @@ const keyHandler = (props) => {
       activeRow, setActiveRow,
       activeCol, setActiveCol,
       keyBoardButtonPressed, setKeyBoardButtonPressed,
-      newboard, setNewBoard,
-      Answer, CheckWordOnEnter, 
-      DeleteWord, keyHandler, 
-      newboardColor, setNewBoardColor
+      newBoard, setNewBoard,
+      Answer, checkWordOnEnter, 
+      deleteWord, keyHandler, 
+      newBoardColor, setNewBoardColor
     }}>
     <div className="App">
        <GameBoard />
