@@ -18,32 +18,66 @@
   
   .App {
     display: flex;
-    min-height: 75vh;
+    min-height: 65vh;
     align-items: flex-start;
     justify-content: center;
   }
 
+
+  .Title{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
   .gameBoard {
     width: 100%;
+    margin-left: 30px;
     max-width: 400px;
-    border-radius: 16px;
-    margin-top: flex-start;
+    margin-top: 40px;
   }
 
 
 .Square {
-    background: var(--dark);
+  width: 2.75em;
+  height: 2.75em;
+  display: flex;
+  color: white;
   border: 1px solid #999;
-  float: right;
-  font-size: 24px;
+  float: left;
+  font-size: 25px;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
   margin-right: 5px;
   margin-top: 5px;
-  padding: 0;
   text-align: center;
-  width: 34px;
+  align-items: center;
+  justify-content: center;
 }
 
   
+.KeyBoard {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+}
+
+.button { 
+border-radius: 10%;
+width: 4em;
+height: 4em;
+text-align: center;
+align-items: center;
+justify-content: center;
+background-color: #999;
+font-weight: bold;
+margin-left: 3px;
+margin-bottom: 3px;
+color: white;
+display: flex;
+float: left;
+font-size: 18px;
+}

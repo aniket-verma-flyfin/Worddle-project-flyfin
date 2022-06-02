@@ -1,17 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Square extends Component{
-    constructor(props){
-        super(props);
-        this.width = '3em';
-        this.height = '3em';
-    }
-
-    render(){
-        return <div className='Square' 
-                style = {{width: this.width, height: this.height}}
-            />
-    }
+// square component 
+function Square(props){
+        // return the className  
+        return (<div className='Square' id = {props.id} 
+        style = {{backgroundColor: props.color}}>
+                {props.val}
+                </div>
+        );
 }
 
 export default Square
